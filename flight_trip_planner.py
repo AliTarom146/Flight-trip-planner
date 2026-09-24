@@ -14,7 +14,7 @@ trip = {
     "destination": input("Enter your destination: "),
     "flight_cost": float(input("Enter flight cost: $")),
     "hotel_cost": float(input("Enter hotel cost: $")),
-    "nights": 4,
+    "nights": int(input("Enter number of nights: ")),
     "activities": ["Eiffel Tower", "Louvre Museum"]
 }
 
