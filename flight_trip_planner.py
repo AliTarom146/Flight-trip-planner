@@ -47,14 +47,25 @@ while True:
 
     elif choice == "3":
         if len(trips) == 0:
-           print("No trips have been added.")
+            print("No trips have been added.")
         else:
             for trip in trips:
                 total = trip["flight_cost"] + trip["hotel_cost"]
                 print("Total Trip Cost: $", total)
 
     elif choice == "4":
-        print("Remove Trip selected")
+        if len(trips) == 0:
+            print("No trips have been added.")
+        else:
+            destination = input("Enter the destination to remove: ")
+
+        for trip in trips:
+             if trip["destination"] == destination:
+                trips.remove(trip)
+                print("Trip removed successfully!")
+                break
+        else:
+            print("Trip not found.")
 
     elif choice == "5":
         print("Goodbye!")
