@@ -8,16 +8,22 @@ Date: September 2026
 print("===== FLIGHT TRIP PLANNER =====")
 print("Plan your next trip!")
 
-destination = "Paris"
-flight_cost = 850
-hotel_cost = 600
-nights = 4
-activities = ["Eiffel Tower", "Louvre Museum"]
+trips = []
+
+trip = {
+    "destination": "Paris",
+    "flight_cost": 850,
+    "hotel_cost": 600,
+    "nights": 4,
+    "activities": ["Eiffel Tower", "Louvre Museum"]
+}
+
+trips.append(trip)
 
 print()
 print("Trip Information")
-print("Destination:", destination)
-print("Flight Cost: $", flight_cost)
-print("Hotel Cost: $", hotel_cost)
-print("Nights:", nights)
-print("Activities:", activities)
+print("Destination:", trip["destination"])
+print("Flight Cost: $", trip["flight_cost"])
+print("Hotel Cost: $", trip["hotel_cost"])
+print("Nights:", trip["nights"])
+print("Activities:", trip["activities"])
