@@ -10,20 +10,50 @@ print("Plan your next trip!")
 
 trips = []
 
-trip = {
-    "destination": input("Enter your destination: "),
-    "flight_cost": float(input("Enter flight cost: $")),
-    "hotel_cost": float(input("Enter hotel cost: $")),
-    "nights": int(input("Enter number of nights: ")),
-    "activities": input("Enter an activity: "),
-}
+while True:
+    print()
+    print("1. Add Trip")
+    print("2. View Trip")
+    print("3. Calculate Total")
+    print("4. Remove Trip")
+    print("5. Exit")
 
-trips.append(trip)
+    choice = input("Choose an option: ")
 
-print()
-print("Trip Information")
-print("Destination:", trip["destination"])
-print("Flight Cost: $", trip["flight_cost"])
-print("Hotel Cost: $", trip["hotel_cost"])
-print("Nights:", trip["nights"])
-print("Activities:", trip["activities"])
+    if choice == "1":
+        trip = {
+            "destination": input("Enter your destination: "),
+            "flight_cost": float(input("Enter flight cost: $")),
+            "hotel_cost": float(input("Enter hotel cost: $")),
+            "nights": int(input("Enter number of nights: ")),
+            "activities": input("Enter an activity: ")
+        }
+
+        trips.append(trip)
+        print("Trip added successfully!")
+
+    elif choice == "2":
+        if len(trips) == 0:
+            print("No trips have been added.")
+        else:
+            for trip in trips:
+                print()
+                print("Trip Information")
+                print("Destination:", trip["destination"])
+                print("Flight Cost: $", trip["flight_cost"])
+                print("Hotel Cost: $", trip["hotel_cost"])
+                print("Nights:", trip["nights"])
+                print("Activities:", trip["activities"])
+
+    elif choice == "3":
+        print("Calculate Total selected")
+
+    elif choice == "4":
+        print("Remove Trip selected")
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
