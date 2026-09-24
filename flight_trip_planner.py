@@ -46,7 +46,12 @@ while True:
                 print("Activities:", trip["activities"])
 
     elif choice == "3":
-        print("Calculate Total selected")
+        if len(trips) == 0:
+           print("No trips have been added.")
+        else:
+            for trip in trips:
+                total = trip["flight_cost"] + trip["hotel_cost"]
+                print("Total Trip Cost: $", total)
 
     elif choice == "4":
         print("Remove Trip selected")
