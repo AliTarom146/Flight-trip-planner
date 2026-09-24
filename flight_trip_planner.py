@@ -13,7 +13,7 @@ trips = []
 trip = {
     "destination": input("Enter your destination: "),
     "flight_cost": float(input("Enter flight cost: $")),
-    "hotel_cost": 600,
+    "hotel_cost": float(input("Enter hotel cost: $")),
     "nights": 4,
     "activities": ["Eiffel Tower", "Louvre Museum"]
 }
