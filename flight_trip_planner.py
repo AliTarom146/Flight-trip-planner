@@ -2,6 +2,7 @@
 
 Author: Ali Tarom
 Purpose: A simple program for planning a trip and calculating travel costs.
+Starter/Resources: Python Crash Course, Chapters 1-7
 Date: September 2026
 """
 
@@ -22,7 +23,7 @@ while True:
 
     if choice == "1":
         trip = {
-            "destination": input("Enter your destination: "),
+            "destination": input("Enter your destination: ").strip(),
             "flight_cost": float(input("Enter flight cost: $")),
             "hotel_cost": float(input("Enter hotel cost: $")),
             "nights": int(input("Enter number of nights: ")),
@@ -57,15 +58,15 @@ while True:
         if len(trips) == 0:
             print("No trips have been added.")
         else:
-            destination = input("Enter the destination to remove: ")
+            destination = input("Enter the destination to remove: ").strip()
 
-        for trip in trips:
-             if trip["destination"] == destination:
-                trips.remove(trip)
-                print("Trip removed successfully!")
-                break
-        else:
-            print("Trip not found.")
+            for trip in trips:
+                if trip["destination"] == destination:
+                    trips.remove(trip)
+                    print("Trip removed successfully!")
+                    break
+            else:
+                print("Trip not found.")
 
     elif choice == "5":
         print("Goodbye!")
