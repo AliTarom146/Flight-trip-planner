@@ -11,7 +11,7 @@ print("Plan your next trip!")
 trips = []
 
 trip = {
-    "destination": "Paris",
+    "destination": input("Enter your destination: "),
     "flight_cost": 850,
     "hotel_cost": 600,
     "nights": 4,
