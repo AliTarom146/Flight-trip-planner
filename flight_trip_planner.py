@@ -8,6 +8,50 @@ Date: October, 2026
 """
 
 from trip import Trip
+import json
+from pathlib import Path
+
+TRIPS_FILE = Path("trips.json")
+
+
+def save_trips(trips):
+    """Save trips to a JSON file."""
+    trip_data = []
+
+    for trip in trips:
+        trip_data.append({
+            "destination": trip.destination,
+            "flight_cost": trip.flight_cost,
+            "hotel_cost": trip.hotel_cost,
+            "nights": trip.nights,
+            "activities": trip.activities
+        })
+
+    with open(TRIPS_FILE, "w") as file:
+        json.dump(trip_data, file, indent=4)
+
+
+def load_trips():
+    """Load saved trips from a JSON file."""
+    if not TRIPS_FILE.exists():
+        return []
+
+    with open(TRIPS_FILE, "r") as file:
+        trip_data = json.load(file)
+
+    trips = []
+
+    for data in trip_data:
+        trip = Trip(
+            data["destination"],
+            data["flight_cost"],
+            data["hotel_cost"],
+            data["nights"],
+            data["activities"]
+        )
+        trips.append(trip)
+
+    return trips
 
 
 def display_menu():
@@ -97,7 +141,7 @@ def remove_trip(trips):
 
 def main():
     """Run the main program."""
-    trips = []
+    trips = load_trips()
 
     print("===== FLIGHT TRIP PLANNER =====")
     print("Plan your next trip!")
@@ -108,12 +152,14 @@ def main():
 
         if choice == "1":
             add_trip(trips)
+            save_trips(trips)
         elif choice == "2":
             view_trips(trips)
         elif choice == "3":
             calculate_totals(trips)
         elif choice == "4":
             remove_trip(trips)
+            save_trips(trips)
         elif choice == "5":
             print("Goodbye!")
             break
