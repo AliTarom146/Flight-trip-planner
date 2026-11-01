@@ -54,6 +54,32 @@ def load_trips():
     return trips
 
 
+def get_float_input(prompt):
+    """Get a valid price from the user."""
+    while True:
+        try:
+            value = float(input(prompt))
+            if value < 0:
+                print("Please enter a positive amount.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+def get_int_input(prompt):
+    """Get a valid whole number from the user."""
+    while True:
+        try:
+            value = int(input(prompt))
+            if value < 0:
+                print("Please enter a positive number.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a whole number.")
+
+
 def display_menu():
     """Display the main menu."""
     print()
@@ -68,9 +94,9 @@ def display_menu():
 def add_trip(trips):
     """Get trip information and add it to the list."""
     destination = input("Enter your destination: ").strip()
-    flight_cost = float(input("Enter flight cost: $"))
-    hotel_cost = float(input("Enter hotel cost: $"))
-    nights = int(input("Enter number of nights: "))
+    flight_cost = get_float_input("Enter flight cost: $")
+    hotel_cost = get_float_input("Enter hotel cost: $")
+    nights = get_int_input("Enter number of nights: ")
     activities = input("Enter an activity: ").strip()
 
     trip = Trip(
